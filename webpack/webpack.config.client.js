@@ -6,9 +6,11 @@ const config = {
   entry: './source/client.jsx',
   output: {
     filename: 'app.js',
-    path: './built/statics',
+    path: process.env.NODE_ENV === 'production'
+      ? './build/statics'
+      : './built/statics',
     publicPath: process.env.NODE_ENV === 'production'
-      ? 'https://platzi-react-sfs.now.sh'
+      ? 'https://setjafet-sfs.now.sh'
       : 'http://localhost:3001/',
   },
   module: {

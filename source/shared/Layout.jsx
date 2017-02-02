@@ -22,10 +22,10 @@ function Layout(props) {
 			<nav className={styles.nav}>
 				<h1 className={styles.tit}>SetJaf</h1>
 				<ul className={styles.listanav}>
-					<li className={styles.ligas}><a href="#">GitHub</a></li>
-					<li className={styles.ligas}><a href="#">LinkedIn</a></li>
-					<li className={styles.ligas}><a href="#">BackstageCLTV</a></li>
-					<li className={styles.ligas}><a href="#">SetJaf</a></li>
+					<li className={styles.ligas}><a href="https://github.com/setjaf/" target="_blank">GitHub</a></li>
+					<li className={styles.ligas}><a href="https://www.linkedin.com/in/set-jafet-renedo-ortega-7407b9136" target="_blank">LinkedIn</a></li>
+					<li className={styles.ligas}><a href="http://wwww.bacstagecltv.com" target="_blank">BackstageCLTV</a></li>
+					<li className={styles.ligas}><a href="#" target="_blank">SetJaf</a></li>
 				</ul>
 			</nav>
 			

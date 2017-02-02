@@ -30,7 +30,7 @@ class Lista extends Component {
 	handleClick(){
 		let hola = new Date();
 		let mes=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"]
-		let fecha = hola.getDate() + " " + mes[hola.getMonth()] + " " + hola.getHours() +":"+ minutos(hola.getMinutes());
+		let fecha = hola.getDate() + " " + mes[hola.getMonth()] + " " + minutos(hola.getHours()) +":"+ minutos(hola.getMinutes());
 		if ( this.state.Value!='' && this.state.Value!=' ') 
 			{
 

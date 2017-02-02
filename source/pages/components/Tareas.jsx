@@ -16,7 +16,6 @@ class Tareas extends Component{
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log(nextProps.content);
 		if (this.props.content != nextProps.content && nextProps.content != "" && nextProps.content != " ") {
 			this.setState({
 				Ntareas: this.state.Ntareas + 1,
@@ -43,7 +42,7 @@ class Tareas extends Component{
 				this.state.Ltareas.map(
 					(tarea,index) => 
 						<div className={styles.item}>
-							<button name={index} onClick={this.handleClick}>X</button>
+							<button name={index} onClick={this.handleClick}>x</button>
 							
 							<p className={styles.texto}>{tarea}</p>	
 
