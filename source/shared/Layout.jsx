@@ -1,14 +1,15 @@
 import React from 'react';
+import styles from './styles.css';
 
 function Layout(props) {
 	return(
 			<html>
 			<head>
 				<meta charSet="utf-8"/>
-				<title>{props.title}</title>
+				<title>Lista de tareas</title>
 				<link
 					rel="stylesheet"
-					href="http://localhost:3001/styles.css"
+					href={`${props.domain}/styles.css`}
 				/>
 				<link
 					rel="stylesheet"
@@ -18,7 +19,18 @@ function Layout(props) {
 			</head>
 			<body>
 
+			<nav className={styles.nav}>
+				<h1 className={styles.tit}>SetJaf</h1>
+				<ul className={styles.listanav}>
+					<li className={styles.ligas}><a href="#">GitHub</a></li>
+					<li className={styles.ligas}><a href="#">LinkedIn</a></li>
+					<li className={styles.ligas}><a href="#">BackstageCLTV</a></li>
+					<li className={styles.ligas}><a href="#">SetJaf</a></li>
+				</ul>
+			</nav>
+			
 				<div
+				className={styles.contenedor}
 					id="render-target"
 					dangerouslySetInnerHTML={{
 						__html: props.content,
@@ -26,9 +38,9 @@ function Layout(props) {
 				/>
 
 
-			<script src="http://localhost:3001/app.js"/>
+			<script src={`${props.domain}/app.js`}/>
 			</body>
-			</html>
+</html>
 
 	);
 }
