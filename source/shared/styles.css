@@ -1,4 +1,5 @@
 *{margin:0;}
+/*Barra de navegación*/
 .nav{
 	width: 100%;
 	background-color: #081A24;
@@ -39,6 +40,7 @@
 .ligas a:hover{
 		color: #C42633;
 }
+/*Comienza contenido*/
 .contenedor{
 	width: 100%;
 	box-sizing: border-box;
@@ -55,7 +57,7 @@
 	justify-content: space-around;
 	margin: 20px 0;
 }
-.contenido textarea{
+.contenido .textarea{
 	width: 100%;
 	height: 174px;
 	border:0 none transparent;
@@ -79,6 +81,8 @@
   border: 0 none;
   height: 24px;
   color: white;
+  position: absolute;
+  bottom: 0;
 }
 .texto{
 	margin: 0;
@@ -97,7 +101,7 @@
 }
 .fecha{
 	position: absolute;
-	bottom: 0;
+	top: 0;
 	transform: translate(-50%);
 	left: 50%;
 	color: #C42633;	

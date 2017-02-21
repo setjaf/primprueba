@@ -1,10 +1,15 @@
 import React from 'react';
 import {render} from 'react-dom';
+import {BrowserRouter} from 'react-router';
 
-import Lista from './pages/container/Lista.jsx';
+import Pages from './pages/container/Pages.jsx';
 
 render(
-		<Lista/> ,
+	<BrowserRouter>
+
+		<Pages/>
+
+	</BrowserRouter> ,
 
 	document.getElementById('render-target')
 

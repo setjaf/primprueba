@@ -1,4 +1,5 @@
 *{margin:0;}
+/*Barra de navegación*/
 ._2zg6fAh8EPRkOytZ1k0V9r{
 	width: 100%;
 	background-color: #081A24;
@@ -39,6 +40,7 @@
 ._2vf4uRtWJDL32lQlQk2HCf a:hover{
 		color: #C42633;
 }
+/*Comienza contenido*/
 ._1tvgKAgBgO4bLqj6CQgQw-{
 	width: 100%;
 	box-sizing: border-box;
@@ -55,7 +57,7 @@
 	justify-content: space-around;
 	margin: 20px 0;
 }
-._2ZLQhm-ig7Nyp7K9CqP72j textarea{
+._2ZLQhm-ig7Nyp7K9CqP72j ._35fbRnuOXu8-CeECwA_Y83{
 	width: 100%;
 	height: 174px;
 	border:0 none transparent;
@@ -79,6 +81,8 @@
   border: 0 none;
   height: 24px;
   color: white;
+  position: absolute;
+  bottom: 0;
 }
 .mTlFJ8naw1hy-3v7btO9C{
 	margin: 0;
@@ -97,7 +101,7 @@
 }
 ._2mJCjYXai3fZKp6dqsZ5gP{
 	position: absolute;
-	bottom: 0;
+	top: 0;
 	transform: translate(-50%);
 	left: 50%;
 	color: #C42633;	
