@@ -1,2 +1,2 @@
 [config]
-command = sdeploy.cmd
+command = deploy.cmd
