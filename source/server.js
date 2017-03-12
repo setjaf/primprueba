@@ -65,4 +65,4 @@ function requestHandler(request,response) {
 
 const server = http.createServer(requestHandler);
 
-server.listen(process.env.NODE_ENV === 'production'?80:3000);
+server.listen(process.env.NODE_ENV === 'production'?1337:3000);
