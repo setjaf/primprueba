@@ -1,7 +1,11 @@
-import React,{Component} from 'react';
+import React,{Component} from 'react'
 import {Redirect} from 'react-router'
+import * as firebase from 'firebase'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 
 import Tareas from '../components/Tareas.jsx';
+import Inactivas from '../components/Inactivas.jsx'
 import styles from '../../shared/styles.css';
 
 
@@ -19,52 +23,156 @@ class Lista extends Component {
 	constructor(props) {
 		super(props);
 		this.state={
-			Registro: '',
-			Value: '',
-			Tarea: '',
+			startDate: moment(),
+			ValueT: 'Título...',
+			ValueC: 'Contenido...',
+			ValueF: '',
+			Tarea: {
+				titulo:"",
+				contenido:"",
+			},
+			send:true,
+			signOut:false,
 		};
 
 		this.handleClick = this.handleClick.bind(this);
-		this.handleChange = this.handleChange.bind(this);
+		this.handleClickSalir = this.handleClickSalir.bind(this);
+		this.handleChangeC = this.handleChangeC.bind(this);
+		this.handleChangeT = this.handleChangeT.bind(this);
+		this.handleChangeF = this.handleChangeF.bind(this);
+		this.handleFocus = this.handleFocus.bind(this);
+		this.handleBlur = this.handleBlur.bind(this);
 
 	}
 
 	handleClick(){
-		let hola = new Date();
-		let mes=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"]
-		let fecha = hola.getDate() + " " + mes[hola.getMonth()] + " " + minutos(hola.getHours()) +":"+ minutos(hola.getMinutes());
-		if ( this.state.Value!='' && this.state.Value!=' ') 
+		let hoy = new Date();
+		let mes=["01","02","03","04","05","06","07","08","09","10","11","12"]
+		let fecha = hoy.getDate() + "/" + mes[hoy.getMonth()] + "/" + hoy.getFullYear();
+		if ( this.state.ValueT!='' && this.state.ValueT!=' ' && this.state.ValueT!='Título...' && this.state.ValueC!='' && this.state.ValueC!=' ' && this.state.ValueC!='Contenido...' &&this.state.ValueF!='' && this.state.ValueF!=' ' ) 
 			{
+
 				this.setState({
-					Registro: fecha,
-					Tarea: this.state.Value,
-					Value: '',
+					
+					Tarea: {
+						titulo:this.state.ValueT,
+						contenido:this.state.ValueC,
+						registro: fecha,
+						finaliza: this.state.ValueF,
+					},
+					ValueT: 'Título...',
+					ValueC: 'Contenido...',
+					ValueF: '',
+					send:true,
+					startDate: moment(),
 				})
 			}
 	}
 
-	handleChange(event){
+	handleClickSalir(){
+		let esto=this;
+		firebase.auth().signOut().then(function(a) {
+			esto.setState({
+		  	signOut:true,
+		  })
+		}, function(error) {
+		  console.log(error)
+		  alert(error);
+
+		});
+	}
+
+	handleChangeF(e){
+
 		this.setState({
-			Value: event.target.value,
+			send:false,
+			startDate: e,
+			ValueF: e.format("MM/DD/YYYY"),
 		})
+		
+	}
+
+	handleChangeC(e){
+		this.setState({
+			send:false,
+			ValueC: e.target.value,
+		})
+		
+	}
+	handleChangeT(e){
+		this.setState({
+			send:false,
+			ValueT: e.target.value,
+		})		
+	}
+	handleFocus(e){
+		if (this.state.send) {
+			this.setState({
+				Tarea: {
+						titulo:'',
+						contenido:'',
+						registro: '',
+						finaliza: '',
+					},
+			})
+		}
+		if (e.target.value==='Título...') {
+			this.setState({
+				ValueT: '',
+			})
+		}
+		else if (e.target.value==='Contenido...') {
+			this.setState({
+				ValueC: '',
+			})
+		}			
+	}
+
+	handleBlur(e){
+		if (e.target.value==='' && e.target.name==="tit") {
+			this.setState({
+				ValueT: 'Título...',
+			})
+		}		
+		if (e.target.value==='' && e.target.name==="con") {
+			this.setState({
+				ValueC: 'Contenido...',
+			})
+		}
 	}
 
 	render(){
 		const log = this.props.location.state;
+		let pasa;
+		if (log && this.state.signOut) {pasa=false}else{pasa=true}
+		console.log(this.props.location.state)
 		return(
-				log ? 
+				pasa ? 
 					(
 						<div>
+							<button onClick={this.handleClickSalir}>Salir</button>
 							<h2 className={styles.subtit}>Agrega una tarea:</h2>
 							<section className={styles.contenido}>
-								<div className={styles.item}>
-									<div contenteditable="true" aria-multiline="true" role="textbox" tabindex="0" className={styles.textarea} spellcheck="true" onChange={this.handleChange}></div>
+								<div className={styles.agreTar}>
 									
-									<button onClick={this.handleClick}>
-						       +
-						      </button>
+									<textarea name={'tit'} className={styles.titText} value={this.state.ValueT} onChange={this.handleChangeT} onFocus={this.handleFocus} onBlur={this.handleBlur} />
+									
+									<DatePicker className={styles.titText}
+										dateFormat="MM/DD/YYYY" selected={this.state.startDate} onChange={this.handleChangeF}
+									 />
+									<textarea name={'con'} value={this.state.ValueC} onChange={this.handleChangeC} className={styles.contText} onFocus={this.handleFocus} onBlur={this.handleBlur}/>
+									<div className={styles.DagreTB}>
+										<button className={styles.agreTB} onClick={this.handleClick} >
+							       +
+							      </button>
+							    </div>
 								</div>
-					      <Tareas content={this.state.Tarea} registro={this.state.Registro} {...log}/>
+								{this.state.send ? 
+						      (<Tareas  {...log} {...this.state.Tarea}/>):
+						      (<Tareas  {...log} contenido="" registro="" titulo=""/>)
+					    	}
+					    	<Inactivas {...log}/>
+
 					      	      
 							</section>
 						</div>

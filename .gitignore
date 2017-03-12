@@ -1,0 +1,4 @@
+#Carpetas que no sirven para nada
+built/*
+firebase/
+Webpack2/
