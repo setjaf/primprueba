@@ -9,6 +9,7 @@ import Layout from './shared/Layout.jsx';
 const domain = process.env.NODE_ENV === 'production'
   ? 'https://setjafet-sfs.now.sh'
   : 'http://localhost:3001';
+const port = process.env.port|| 3000;
 
 function requestHandler(request,response) {
 	const context = createServerRenderContext();
@@ -65,4 +66,4 @@ function requestHandler(request,response) {
 
 const server = http.createServer(requestHandler);
 
-server.listen(process.env.NODE_ENV === 'production'?1337:3000);
+server.listen(port);

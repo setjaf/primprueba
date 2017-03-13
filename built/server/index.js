@@ -69,6 +69,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	const domain =  false ? 'https://setjafet-sfs.now.sh' : 'http://localhost:3001';
+	const port = ({"NODE_ENV":"development"}).port || 3000;
 
 	function requestHandler(request, response) {
 		const context = (0, _reactRouter.createServerRenderContext)();
@@ -109,7 +110,7 @@
 
 	const server = _http2.default.createServer(requestHandler);
 
-	server.listen(3000);
+	server.listen(port);
 
 /***/ },
 /* 1 */
