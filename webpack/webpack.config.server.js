@@ -12,8 +12,8 @@ const nodeModules = fs
 
 const config = {
   entry: './source/server.js',
-  output: {'server.js',
-    /*filename: process.env.NODE_ENV === 'production'
+  output: {
+    filename: 'server.js', /*process.env.NODE_ENV === 'production'
       ? 'server.js'
       : 'index.js',*/
     path: './', /*process.env.NODE_ENV === 'production'
