@@ -104,6 +104,8 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   IF !ERRORLEVEL! NEQ 0 goto error
   call :ExecuteCmd !NPM_CMD! run webpack
   IF !ERRORLEVEL! NEQ 0 goto error
+  call :ExecuteCmd !NPM_CMD! run now-start
+  IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
 

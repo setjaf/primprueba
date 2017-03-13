@@ -12,7 +12,7 @@
     "bff": "node ./built/server/index.js",
     "deploy": "now",
     "deploy:sfs": "now ./build/statics/",
-    "now-start": "node ./build/server/server.js",
+    "now-start": "node server.js",
     "sfs": "list ./built/statics/ --port 3001 --cache 0",
     "watch": "webpack -w",
     "webpack":"node_modules/.bin/webpack"
