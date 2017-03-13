@@ -17,7 +17,7 @@ const config = {
       ? 'server.js'
       : 'index.js',
     path:  process.env.NODE_ENV === 'production'
-      ? './build/server'
+      ? './server'
       : './built/server',
     publicPath: process.env.NODE_ENV === 'production'
       ? 'https://platzi-react-sfs.now.sh'
