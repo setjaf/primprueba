@@ -15,7 +15,7 @@
     "now-start": "node ./build/server/server.js",
     "sfs": "list ./built/statics/ --port 3001 --cache 0",
     "watch": "webpack -w",
-    "webpack":"node_modules/.bin/webpack"
+    "webpack":"NODE_ENV='production' node_modules/.bin/webpack"
   },
   "author": "",
   "license": "ISC",
