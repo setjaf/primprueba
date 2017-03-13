@@ -14,7 +14,8 @@
     "deploy:sfs": "now ./build/statics/",
     "now-start": "node ./build/server/server.js",
     "sfs": "list ./built/statics/ --port 3001 --cache 0",
-    "watch": "webpack -w"
+    "watch": "webpack -w",
+    "webpack":"node_modules/.bin/webpack"
   },
   "author": "",
   "license": "ISC",
