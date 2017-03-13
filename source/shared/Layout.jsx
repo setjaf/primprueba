@@ -41,9 +41,6 @@ function Layout(props) {
 				<h1 className={"tit"}>SetJaf</h1>
 				<ul className={"listanav"}>
 					<li className={"ligas"}><a href="https://github.com/setjaf/" target="_blank">GitHub</a></li>
-					<li className={"ligas"}><a href="https://www.linkedin.com/in/set-jafet-renedo-ortega-7407b9136" target="_blank">LinkedIn</a></li>
-					<li className={"ligas"}><a href="http://wwww.bacstagecltv.com" target="_blank">BackstageCLTV</a></li>
-					<li className={"ligas"}><a href="#" target="_blank">SetJaf</a></li>
 				</ul>
 			</nav>
 

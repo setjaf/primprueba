@@ -1,4 +1,5 @@
 import http from 'http';
+const port = process.env.PORT|| 3000;
 import React from 'react';
 import {renderToString, renderToStaticMarkup} from 'react-dom/server';
 import {ServerRouter, createServerRenderContext} from 'react-router';
@@ -8,8 +9,8 @@ import Layout from './shared/Layout.jsx';
 
 const domain = process.env.NODE_ENV === 'production'
   ? 'https://setjafet-sfs.now.sh'
-  : 'http://localhost:3001';
-const port = process.env.port|| 3000;
+  : 'https://tareassj-22b9f.firebaseapp.com';
+
 
 function requestHandler(request,response) {
 	const context = createServerRenderContext();

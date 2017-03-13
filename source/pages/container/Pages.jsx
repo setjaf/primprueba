@@ -24,7 +24,7 @@ function Pages(){
 				exactly
 				component={Lista}
 			/>
-			<Miss	component={Error404} />	
+			<Miss	component={Login} />	
 
 		</main>
 

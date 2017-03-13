@@ -2,6 +2,10 @@ import React,{Component} from 'react';
 import * as firebase from 'firebase'
 import {BrowserRouter, Redirect} from 'react-router'
 
+
+import styles from '../../shared/styles.css';
+
+
 const config = {
     apiKey: "AIzaSyA3rp2bNVh4LfwP6KvFqBHgfx6TX2EtmCI",
     authDomain: "tareassj-22b9f.firebaseapp.com",
@@ -71,7 +75,7 @@ const config = {
             }/>
           ):
           (
-            <button onClick={this.handleClick}>Login Google</button>
+            <div className={styles.login}><button onClick={this.handleClick}>Login Google</button></div>
           )
         }
  				

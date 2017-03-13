@@ -12,8 +12,6 @@
 	box-sizing: border-box;
 }
 .foo{
-	position: fixed;
-	bottom: 0;
 	width: 100%;
 	background-color: #4D7373;
 	display: flex;
@@ -56,6 +54,20 @@
 }
 /*Termina barra*/
 
+.login{
+	width: 100%;
+	height:100vh;
+}
+
+.login button{
+	width: 70%;
+	height: 250px;
+	background-color: transparent;
+	border: 5px solid #2b4040;
+	color: black;
+	font-weight: bold;
+	font-size: 1em;
+}
 /*Comienza contenido*/
 
 .contenedor{
