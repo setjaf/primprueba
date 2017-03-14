@@ -13,12 +13,12 @@ const nodeModules = fs
 const config = {
   entry: './source/server.js',
   output: {
-    filename: 'server.js', /*process.env.NODE_ENV === 'production'
+    filename: process.env.NODE_ENV === 'production'
       ? 'server.js'
-      : 'index.js',*/
-    path: './', /*process.env.NODE_ENV === 'production'
+      : 'index.js',
+    path: process.env.NODE_ENV === 'production'
       ? './server'
-      : './built/server',*/
+      : './built/server',
     publicPath: process.env.NODE_ENV === 'production'
       ? 'https://platzi-react-sfs.now.sh'
       : 'http://localhost:3001/',

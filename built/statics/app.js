@@ -25338,6 +25338,14 @@
 		componentDidMount(e) {
 			const esto = this;
 			const cargaDatos = firebase.database().ref('Tareas/' + this.props.uid).orderByChild("Estado").equalTo("activa");
+			const connectedRef = firebase.database().ref(".info/connected");
+			connectedRef.on("value", function (snap) {
+				if (snap.val() === true) {
+					alert("connected");
+				} else {
+					alert("not connected");
+				}
+			});
 			cargaDatos.on('value', function (snapshot) {
 
 				snapshot.forEach(ActLista);
@@ -25551,7 +25559,7 @@
 				startDate: (0, _moment2.default)(),
 				ValueT: 'Título...',
 				ValueC: 'Contenido...',
-				ValueF: '',
+				ValueF: (0, _moment2.default)().format("MM/DD/YYYY"),
 				Tarea: {
 					titulo: "",
 					contenido: ""
@@ -25585,7 +25593,7 @@
 					},
 					ValueT: 'Título...',
 					ValueC: 'Contenido...',
-					ValueF: '',
+					ValueF: (0, _moment2.default)().format("MM/DD/YYYY"),
 					send: true,
 					startDate: (0, _moment2.default)()
 				});

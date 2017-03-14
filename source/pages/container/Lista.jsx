@@ -26,7 +26,7 @@ class Lista extends Component {
 			startDate: moment(),
 			ValueT: 'Título...',
 			ValueC: 'Contenido...',
-			ValueF: '',
+			ValueF: moment().format("MM/DD/YYYY"),
 			Tarea: {
 				titulo:"",
 				contenido:"",
@@ -49,7 +49,7 @@ class Lista extends Component {
 		let hoy = new Date();
 		let mes=["01","02","03","04","05","06","07","08","09","10","11","12"]
 		let fecha = hoy.getDate() + "/" + mes[hoy.getMonth()] + "/" + hoy.getFullYear();
-		if ( this.state.ValueT!='' && this.state.ValueT!=' ' && this.state.ValueT!='Título...' && this.state.ValueC!='' && this.state.ValueC!=' ' && this.state.ValueC!='Contenido...' &&this.state.ValueF!='' && this.state.ValueF!=' ' ) 
+		if ( this.state.ValueT!='' && this.state.ValueT!=' ' && this.state.ValueT!='Título...' && this.state.ValueC!='' && this.state.ValueC!=' ' && this.state.ValueC!='Contenido...' && this.state.ValueF!='' && this.state.ValueF!=' ') 
 			{
 
 				this.setState({
@@ -62,7 +62,7 @@ class Lista extends Component {
 					},
 					ValueT: 'Título...',
 					ValueC: 'Contenido...',
-					ValueF: '',
+					ValueF: moment().format("MM/DD/YYYY"),
 					send:true,
 					startDate: moment(),
 				})
