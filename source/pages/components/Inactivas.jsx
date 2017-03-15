@@ -30,12 +30,10 @@ function ordenar (ObjLista,IdLista,TarOrd) {
 
 					if(fecha1 < fecha2){
 						TarOrd.splice(i,0,tarea)
-						console.log(TarOrd)
 						break;
 					}
 					else if(i==fechas.length){
 						TarOrd.splice(i,0,tarea)
-						console.log(TarOrd)
 						break;
 					}
 				}

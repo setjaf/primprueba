@@ -91,7 +91,6 @@ class Tareas extends Component{
 		  }
 		});
 		cargaDatos.on('value', function(snapshot) {
-
 			snapshot.forEach(ActLista)
 
 		});

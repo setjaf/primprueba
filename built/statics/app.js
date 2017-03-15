@@ -25112,11 +25112,9 @@
 
 					if (fecha1 < fecha2) {
 						TarOrd.splice(i, 0, tarea);
-						console.log(TarOrd);
 						break;
 					} else if (i == fechas.length) {
 						TarOrd.splice(i, 0, tarea);
-						console.log(TarOrd);
 						break;
 					}
 				}
@@ -25347,7 +25345,6 @@
 				}
 			});
 			cargaDatos.on('value', function (snapshot) {
-
 				snapshot.forEach(ActLista);
 			});
 			//Funcion que permite actualizar estado
@@ -25565,7 +25562,7 @@
 					contenido: ""
 				},
 				send: true,
-				signOut: false
+				signOut: true
 			};
 
 			this.handleClick = this.handleClick.bind(this);
@@ -25604,7 +25601,7 @@
 			let esto = this;
 			firebase.auth().signOut().then(function (a) {
 				esto.setState({
-					signOut: true
+					signOut: false
 				});
 			}, function (error) {
 				console.log(error);
@@ -25671,12 +25668,13 @@
 		render() {
 			const log = this.props.location.state;
 			let pasa;
+			console.log(log, this.state.signOut);
 			if (log && this.state.signOut) {
-				pasa = false;
-			} else {
 				pasa = true;
+			} else {
+				pasa = false;
 			}
-			console.log(this.props.location.state);
+			console.log(pasa);
 			return pasa ? _react2.default.createElement(
 				'div',
 				null,

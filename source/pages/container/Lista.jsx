@@ -32,7 +32,7 @@ class Lista extends Component {
 				contenido:"",
 			},
 			send:true,
-			signOut:false,
+			signOut:true,
 		};
 
 		this.handleClick = this.handleClick.bind(this);
@@ -73,7 +73,7 @@ class Lista extends Component {
 		let esto=this;
 		firebase.auth().signOut().then(function(a) {
 			esto.setState({
-		  	signOut:true,
+		  	signOut:false,
 		  })
 		}, function(error) {
 		  console.log(error)
@@ -144,8 +144,9 @@ class Lista extends Component {
 	render(){
 		const log = this.props.location.state;
 		let pasa;
-		if (log && this.state.signOut) {pasa=false}else{pasa=true}
-		console.log(this.props.location.state)
+		console.log(log , this.state.signOut)
+		if (log && this.state.signOut) {pasa=true}else{pasa=false}
+		console.log(pasa)
 		return(
 				pasa ? 
 					(
