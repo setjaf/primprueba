@@ -4,19 +4,11 @@ import * as firebase from 'firebase'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 
+import Datos from '../components/Datos.jsx';
 import Tareas from '../components/Tareas.jsx';
 import Inactivas from '../components/Inactivas.jsx'
 import styles from '../../shared/styles.css';
 
-
-function minutos(min) {
-	if (min < 10) {
-		min="0"+min;
-		return min;
-	}else{
-		return min;
-	}
-}
 
 class Lista extends Component {
 	
@@ -32,18 +24,46 @@ class Lista extends Component {
 				contenido:"",
 			},
 			send:true,
-			signOut:true,
+			conectado:false,
+			scroll:false,
+			agregar:false,
 		};
-
 		this.handleClick = this.handleClick.bind(this);
-		this.handleClickSalir = this.handleClickSalir.bind(this);
+		this.handleClickA = this.handleClickA.bind(this);
 		this.handleChangeC = this.handleChangeC.bind(this);
 		this.handleChangeT = this.handleChangeT.bind(this);
 		this.handleChangeF = this.handleChangeF.bind(this);
 		this.handleFocus = this.handleFocus.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
+		this.handleScroll = this.handleScroll.bind(this);
 
 	}
+
+	componentDidMount() {
+		
+		window.addEventListener('scroll',this.handleScroll)
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.handleScroll);
+	}
+
+	handleScroll(){
+		const scrolled = window.scrollY;
+
+		console.log(scrolled)
+
+    if(scrolled >= 160 && this.state.scroll==false){
+    	this.setState({
+    		scroll:true,
+    	})
+    }else if(scrolled<=160 && this.state.scroll==true){
+    	this.setState({
+    		scroll:false,
+    	})
+    }
+  }
+
 
 	handleClick(){
 		let hoy = new Date();
@@ -65,21 +85,23 @@ class Lista extends Component {
 					ValueF: moment().format("MM/DD/YYYY"),
 					send:true,
 					startDate: moment(),
+					agregar:false,
 				})
 			}
 	}
 
-	handleClickSalir(){
-		let esto=this;
-		firebase.auth().signOut().then(function(a) {
-			esto.setState({
-		  	signOut:false,
-		  })
-		}, function(error) {
-		  console.log(error)
-		  alert(error);
+	handleClickA(e){
 
-		});
+		if (!this.state.agregar) {
+			this.setState({
+				agregar:true,
+			})
+		}else{
+			this.setState({
+				agregar:false,
+			})
+		}
+		
 	}
 
 	handleChangeF(e){
@@ -144,16 +166,17 @@ class Lista extends Component {
 	render(){
 		const log = this.props.location.state;
 		let pasa;
-		console.log(log , this.state.signOut)
-		if (log && this.state.signOut) {pasa=true}else{pasa=false}
-		console.log(pasa)
+		if (log) {pasa=true}else{pasa=false}
 		return(
 				pasa ? 
 					(
-						<div>
-							<button onClick={this.handleClickSalir}>Salir</button>
-							<h2 className={styles.subtit}>Agrega una tarea:</h2>
-							<section className={styles.contenido}>
+						<div className={styles.contenedor}>
+
+							<Datos {...log}/>
+							<button className={this.state.scroll?styles.botonAS:styles.botonA} onClick={this.handleClickA}>+</button>
+
+							<section className={this.state.agregar?styles.contenidoA:styles.contenidoAS}>
+							
 								<div className={styles.agreTar}>
 									
 									<textarea name={'tit'} className={styles.titText} value={this.state.ValueT} onChange={this.handleChangeT} onFocus={this.handleFocus} onBlur={this.handleBlur} />
@@ -168,14 +191,16 @@ class Lista extends Component {
 							      </button>
 							    </div>
 								</div>
-								{this.state.send ? 
+
+							</section>
+
+							{this.state.send ? 
 						      (<Tareas  {...log} {...this.state.Tarea}/>):
 						      (<Tareas  {...log} contenido="" registro="" titulo=""/>)
-					    	}
-					    	<Inactivas {...log}/>
+					    }
+					    
+					    <Inactivas {...log}/>
 
-					      	      
-							</section>
 						</div>
 					) 
 				: 

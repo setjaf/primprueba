@@ -82,14 +82,8 @@ class Tareas extends Component{
 	componentDidMount(e) {
 		const esto = this;
 		const cargaDatos = firebase.database().ref('Tareas/' + this.props.uid).orderByChild("Estado").equalTo("activa");
-		const connectedRef = firebase.database().ref(".info/connected");
-		connectedRef.on("value", function(snap) {
-		  if (snap.val() === true) {
-		    alert("connected");
-		  } else {
-		    alert("not connected");
-		  }
-		});
+		
+		
 		cargaDatos.on('value', function(snapshot) {
 			snapshot.forEach(ActLista)
 

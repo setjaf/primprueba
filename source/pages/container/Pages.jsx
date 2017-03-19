@@ -10,9 +10,12 @@ import Lista from './Lista.jsx';
 import Error404 from './Error404.jsx';
 
 function Pages(){
+	const divStyle = {
+	  width: '100%',
+	};
 	return(
 
-		<main role="application">
+		<main role="application" style={divStyle}>
 
 			<Match
 				pattern="/"

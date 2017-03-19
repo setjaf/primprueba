@@ -77,9 +77,42 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	margin-bottom: 80px;
 }
-.contenido{
+.Datos{
+  width: 100%;
+  background-color: #4D7373;
+
+}
+.user{
+	display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  padding: 10px;
+  align-items: center;
+}
+.imgU{
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+}
+.nombreU{
+  color: white;
+  letter-spacing: 2px;
+  padding: 0 10px;
+}
+.estadoU{
+  color: white;
+  padding: 0 10px 0 0;
+}
+.botonS{
+	border: 3px solid #3f5d5d;
+	color: white;
+	background-color: #4D7373;
+	margin:0 10px;
+}
+/*Agregar una Tarea*/
+.contenidoA{
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -87,8 +120,35 @@
 	justify-content: space-around;
 	margin: 20px 0;
 }
-/*Agregar una Tarea*/
-
+.contenidoAS{
+	display: none;
+}
+.botonA{
+	position: relative;
+  width: 45px;
+  height: 45px;
+  background-color: #F21D44;
+  box-shadow: 0 3px 2px grey;
+  border: 0 none;
+  border-radius: 100%;
+  color: white;
+  transform: translateY(-50%);
+  right: -35%;
+  transition: all .4s cubic-bezier(0.13, -0.18, 0.58, 1);
+}
+.botonAS{
+	position: fixed;
+  width: 45px;
+  height: 45px;
+  background-color: #F21D44;
+  box-shadow: 0 3px 2px grey;
+  border: 0 none;
+  border-radius: 100%;
+  color: white;
+  right: 9%;
+  bottom: 3%;
+  transition: all .4s cubic-bezier(0.13, -0.18, 0.58, 1);
+}
 .agreTar{
 	width: 200px;
   margin: auto auto;
@@ -141,6 +201,15 @@
 
 
 /*Termina agregar Tarea*/
+.contenido{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin: 20px 0;
+}
+
 .item{
 	  width: 200px;
     display: flex;
@@ -200,11 +269,15 @@
 	transition: all .4s cubic-bezier(0.13, -0.18, 0.58, 1);
 }
 /*accion de los botones*/
-.agreTB:active, .bBotonA:active, .bBotonB:active{
+.agreTB:active, .bBotonA:active, .bBotonB:active, .botonAS:active{
 	box-shadow: none;
   transform: scale(.9,.9);
 }
-.agreTB:focus, .bBotonA:focus, .bBotonB:focus{
+.botonA:active{
+	box-shadow: none;
+  transform: scale(.9,.9) translateY(-50%);
+}
+.agreTB:focus, .bBotonA:focus, .bBotonB:focus, .bBotonB:focus, .botonA:focus, .botonAS:focus{
 	outline: none;
 }
 /*accion de los botones termina*/

@@ -31,7 +31,6 @@ function Layout(props) {
 			</nav>
 			
 				<div
-				className={styles.contenedor}
 					id="render-target"
 					dangerouslySetInnerHTML={{
 						__html: props.content,

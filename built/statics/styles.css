@@ -77,9 +77,42 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	margin-bottom: 80px;
 }
-._2ZLQhm-ig7Nyp7K9CqP72j{
+.JfGnSkiWNp0lW_5yRFf4_{
+  width: 100%;
+  background-color: #4D7373;
+
+}
+._2dP789PAaIMMHbO7gjsreB{
+	display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  padding: 10px;
+  align-items: center;
+}
+.EaG_-vTHRupAdnXFQj1wo{
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+}
+.BfTcnCKlWNEldRJ9NvKKJ{
+  color: white;
+  letter-spacing: 2px;
+  padding: 0 10px;
+}
+._2d_Ep-d8olEf-S_DRmxrtx{
+  color: white;
+  padding: 0 10px 0 0;
+}
+._2C4Di4KWIu8GposRTwH5_X{
+	border: 3px solid #3f5d5d;
+	color: white;
+	background-color: #4D7373;
+	margin:0 10px;
+}
+/*Agregar una Tarea*/
+._15P4sZERfYnNe_nQV-XBKr{
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -87,8 +120,35 @@
 	justify-content: space-around;
 	margin: 20px 0;
 }
-/*Agregar una Tarea*/
-
+.Vv4y2oSaLWoybA4xTeFk5{
+	display: none;
+}
+._25yFzVEWU3DjFpoZw_fxO1{
+	position: relative;
+  width: 45px;
+  height: 45px;
+  background-color: #F21D44;
+  box-shadow: 0 3px 2px grey;
+  border: 0 none;
+  border-radius: 100%;
+  color: white;
+  transform: translateY(-50%);
+  right: -35%;
+  transition: all .4s cubic-bezier(0.13, -0.18, 0.58, 1);
+}
+._22R1-7mYbIwqI9TZAFZyhL{
+	position: fixed;
+  width: 45px;
+  height: 45px;
+  background-color: #F21D44;
+  box-shadow: 0 3px 2px grey;
+  border: 0 none;
+  border-radius: 100%;
+  color: white;
+  right: 9%;
+  bottom: 3%;
+  transition: all .4s cubic-bezier(0.13, -0.18, 0.58, 1);
+}
 ._3IACQMWdo1RttpM851YA42{
 	width: 200px;
   margin: auto auto;
@@ -141,6 +201,15 @@
 
 
 /*Termina agregar Tarea*/
+._2ZLQhm-ig7Nyp7K9CqP72j{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin: 20px 0;
+}
+
 .M83g5at6d_aOJMI2MAzb2{
 	  width: 200px;
     display: flex;
@@ -200,11 +269,15 @@
 	transition: all .4s cubic-bezier(0.13, -0.18, 0.58, 1);
 }
 /*accion de los botones*/
-._3HaaAlAovwIzooc1pYjzkL:active, ._2F_AbBFMdx3zs4CHxLrIeH:active, .c3zhJX6hgPnI--uTku82S:active{
+._3HaaAlAovwIzooc1pYjzkL:active, ._2F_AbBFMdx3zs4CHxLrIeH:active, .c3zhJX6hgPnI--uTku82S:active, ._22R1-7mYbIwqI9TZAFZyhL:active{
 	box-shadow: none;
   transform: scale(.9,.9);
 }
-._3HaaAlAovwIzooc1pYjzkL:focus, ._2F_AbBFMdx3zs4CHxLrIeH:focus, .c3zhJX6hgPnI--uTku82S:focus{
+._25yFzVEWU3DjFpoZw_fxO1:active{
+	box-shadow: none;
+  transform: scale(.9,.9) translateY(-50%);
+}
+._3HaaAlAovwIzooc1pYjzkL:focus, ._2F_AbBFMdx3zs4CHxLrIeH:focus, .c3zhJX6hgPnI--uTku82S:focus, .c3zhJX6hgPnI--uTku82S:focus, ._25yFzVEWU3DjFpoZw_fxO1:focus, ._22R1-7mYbIwqI9TZAFZyhL:focus{
 	outline: none;
 }
 /*accion de los botones termina*/

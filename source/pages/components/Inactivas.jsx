@@ -87,7 +87,6 @@ class Tareas extends Component{
 
 	handleClick(e){
 		let LT=this.state.Ltareas.indexOf(this.state.TOrdenadas[e.target.name]), TO=e.target.name;
-		console.log(this.state.TOrdenadas[TO])
 
 		firebase.database().ref('Tareas/' + this.props.uid + "/"+this.state.TOrdenadas[TO]).remove();		
 		this.state.Ltareas.splice(LT,1);
