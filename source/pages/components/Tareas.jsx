@@ -4,24 +4,41 @@ import styles from '../../shared/styles.css'
 
 import * as firebase from 'firebase';
 
+import {Editor, EditorState, RichUtils, convertFromRaw,convertToRaw} from 'draft-js';
 
 
-function writePostData(userId, Contenido, idTareas, Titulo, Registro,Finaliza) {	
+
+function writePostData(userId, idTareas, Titulo, Registro,Finaliza,Prueba) {	
 	let generarId = firebase.database().ref('Tareas/' + userId).push().key;
   
-  firebase.database().ref('Tareas/' + userId+ "/"+generarId).set({
-  	Contenido: 
-		 Contenido,
-		Creada: 
-		 Registro,
-		Estado: 
-		 "activa",
-		Finaliza: 
-		 Finaliza,
-		Titulo:
-		 Titulo,
+  if(Titulo){
+  	firebase.database().ref('Tareas/' + userId+ "/"+generarId).set({
+			Creada: 
+			 Registro,
+			Estado: 
+			 "activa",
+			Finaliza: 
+			 Finaliza,
+			Titulo:
+			 Titulo,
+			Prueba:
+				Prueba,
+	  });
+  }else{
+  	firebase.database().ref('Tareas/' + userId+ "/"+generarId).set({
+			Creada: 
+			 Registro,
+			Estado: 
+			 "activa",
+			Finaliza: 
+			 Finaliza,
+			Titulo:
+			 null,
+			Prueba:
+				Prueba,
 
-  });
+	  });
+  }
 
 }
 
@@ -92,11 +109,14 @@ class Tareas extends Component{
 		function ActLista(Tarea) {
 
 			if (esto.state.Ltareas.indexOf(Tarea.key) === -1) {
-
+				let objeto=Tarea.val();
+				objeto.Prueba=EditorState.createWithContent(convertFromRaw(JSON.parse(objeto.Prueba)));
 				esto.setState({
 					Ltareas: esto.state.Ltareas.concat(Tarea.key),
-					Otareas: esto.state.Otareas.concat(Tarea.val()),
+					Otareas: esto.state.Otareas.concat(objeto),
 				})
+
+				
 			}
 			
 		}
@@ -108,7 +128,7 @@ class Tareas extends Component{
 		if (nextProps.contenido!="" && nextProps.titulo!="" && nextProps.registro!=""){
 
 			
-			writePostData(nextProps.uid,nextProps.contenido,this.state.Ltareas,nextProps.titulo,nextProps.registro,nextProps.finaliza);
+			writePostData(nextProps.uid,this.state.Ltareas,nextProps.titulo,nextProps.registro,nextProps.finaliza,nextProps.prueba);
 
 			this.setState({
 				Ntareas: this.state.Ntareas + 1,
@@ -159,13 +179,15 @@ class Tareas extends Component{
 					(id, tarea) => 
 						
 						<div className={vencida[tarea]?styles.itemven:styles.item} key={this.state.Ltareas[tarea]}>
-							<h3 className={styles.titulo}>{this.state.Otareas[id].Titulo}</h3>
-							
-							<p className={styles.texto}>{this.state.Otareas[id].Contenido}</p>	
-
+							<h3 className={styles.titulo}>{this.state.Otareas[id].Titulo}</h3>	
+							<Editor
+                editorState={this.state.Otareas[id].Prueba}
+                readOnly={true}
+              />
 							<div className={styles.fecha}>
 								<h5>{this.state.Otareas[id].Finaliza}</h5>
 							</div>
+
 							<div className={styles.botones}>
 								<button className={styles.bBotonA} name={tarea} key={this.state.Ltareas[id]} onClick={this.handleClick}>x</button>
 								<button className={styles.bBotonA} name={tarea} key={this.state.Ltareas[id]+"ok"} onClick={this.handleClickOk}>ok</button>

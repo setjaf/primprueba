@@ -7,6 +7,7 @@ import {
 
 import Login from './Login.jsx';
 import Lista from './Lista.jsx';
+import Texto from './Texto.jsx';
 import Error404 from './Error404.jsx';
 
 function Pages(){
@@ -26,6 +27,12 @@ function Pages(){
 				pattern="/lista"
 				exactly
 				component={Lista}
+			/>
+
+			<Match
+				pattern="/texto"
+				exactly
+				component={Texto}
 			/>
 			<Miss	component={Login} />	
 

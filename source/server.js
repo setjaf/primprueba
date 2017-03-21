@@ -6,7 +6,7 @@ import {ServerRouter, createServerRenderContext} from 'react-router';
 import Pages from './pages/container/Pages.jsx';
 import Layout from './shared/Layout.jsx';
 const port = process.env.PORT|| 3000;
-const domain = 'http://localhost:3001/';
+const domain = process.env.NODE_ENV==='production' ? 'https://tareassj-22b9f.firebaseapp.com':'http://localhost:3001/';
 
 
 function requestHandler(request,response) {

@@ -57,7 +57,7 @@ const config = {
     const logged = this.state.loggin;
     let {user,correo,photo,uid}=this.state;
  		return(
- 			<div>
+ 			<div className={styles.login}>
         {
           logged ? 
           (
@@ -75,7 +75,7 @@ const config = {
             }/>
           ):
           (
-            <div className={styles.login}><button onClick={this.handleClick}>Login Google</button></div>
+            <button onClick={this.handleClick} className={styles.loginB}>Login Google</button>
           )
         }
  				

@@ -15,12 +15,13 @@
     "now-start": "node server.js",
     "sfs": "list ./built/statics/ --port 3001 --cache 0",
     "watch": "webpack -w",
-    "webpack":"node_modules/.bin/webpack"
+    "webpack": "node_modules/.bin/webpack"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-runtime": "^6.22.0",
+    "draft-js": "^0.10.0",
     "firebase": "^3.6.9",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.17.1",

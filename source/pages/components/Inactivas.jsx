@@ -4,6 +4,9 @@ import styles from '../../shared/styles.css'
 
 import * as firebase from 'firebase';
 
+import {Editor, EditorState, RichUtils, convertFromRaw,convertToRaw} from 'draft-js';
+
+
 
 
 
@@ -74,11 +77,12 @@ class Tareas extends Component{
 		function ActLista(Tarea) {
 
 			if (esto.state.Ltareas.indexOf(Tarea.key) === -1) {
-
+				let objeto=Tarea.val();
+				objeto.Prueba=EditorState.createWithContent(convertFromRaw(JSON.parse(objeto.Prueba)));
 				esto.setState({
 					Ltareas: esto.state.Ltareas.concat(Tarea.key),
-					Otareas: esto.state.Otareas.concat(Tarea.val()),
-				})
+					Otareas: esto.state.Otareas.concat(objeto),
+				})	
 			}
 			
 		}
@@ -127,8 +131,11 @@ class Tareas extends Component{
 						
 						<div className={styles.item} key={this.state.Ltareas[tarea]}>
 							<h3 className={styles.titulo}>{this.state.Otareas[id].Titulo}</h3>
-							
-							<p className={styles.texto}>{this.state.Otareas[id].Contenido}</p>	
+
+							<Editor
+                editorState={this.state.Otareas[id].Prueba}
+                readOnly={true}
+              />
 
 							<div className={styles.fecha}>
 								<h5>{this.state.Otareas[id].Finaliza}</h5>

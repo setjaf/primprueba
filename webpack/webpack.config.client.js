@@ -10,7 +10,7 @@ const config = {
       ? './build/statics'
       : './built/statics',
     publicPath: process.env.NODE_ENV === 'production'
-      ? 'https://setjafet-sfs.now.sh'
+      ? 'https://tareassj-22b9f.firebaseapp.com/'
       : 'http://localhost:3001/',
   },
   module: {

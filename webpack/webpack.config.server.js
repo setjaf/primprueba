@@ -17,10 +17,10 @@ const config = {
       ? 'server.js'
       : 'index.js',
     path: process.env.NODE_ENV === 'production'
-      ? './server'
+      ? './build/server'
       : './built/server',
     publicPath: process.env.NODE_ENV === 'production'
-      ? 'https://platzi-react-sfs.now.sh'
+      ? 'https://tareassj-22b9f.firebaseapp.com'
       : 'http://localhost:3001/',
   },
   module: {

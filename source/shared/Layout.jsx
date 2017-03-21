@@ -20,6 +20,11 @@ function Layout(props) {
 					rel="stylesheet"
 					href="https://tareassj-22b9f.firebaseapp.com/style.css"
 				/>
+
+				<link
+					rel="stylesheet"
+					href={`${props.domain}/RichEditor.css`}
+				/>
 				
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/0.41.1/react-datepicker.min.css" />
 
